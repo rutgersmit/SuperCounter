@@ -9,11 +9,6 @@ def start_counting():
         subscription='12345', region='westeurope')
     speech_config.speech_recognition_language = 'nl-NL'
     speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config)
-
-    speech_recognizer.session_started.connect(
-        lambda evt: print('SESSION STARTED: {}'.format(evt)))
-    speech_recognizer.session_stopped.connect(
-        lambda evt: print('\nSESSION STOPPED {}'.format(evt)))
     speech_recognizer.recognized.connect(
         lambda evt: count_word(evt.result.text))
 
